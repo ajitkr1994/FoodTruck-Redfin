@@ -1,0 +1,13 @@
+The command line application works as shows in the README.md file.
+$python3 show_open_food_trucks.py
+
+The basic idea is that we let the API do all the data processing, so that in our application we just have to filter and process the response.
+If we were to convert this to a web application, then we can take the input set of filters from the user.
+For example, the order in which they want to see the results, number of results per page they want to see, etc.
+
+At the frontend, we will have a POST request that will send all of these filters to the backend API.
+We can have a service which is responsible for handling the requests - this will not maintain any state, but wil just call the Socrata API with the proper filters and return the response.
+
+Once we have the response, we can filter the results if we want and send it back to the frontend as a JSON for displaying it on the webpage.
+
+If we have to serve millions of customers using this web application, then we can have multiple servers and use load balancers to route the requests in an efficient manner. We can also add authentication token in our API to verify the users and throttle the requests if they exceed a certain threshold.
